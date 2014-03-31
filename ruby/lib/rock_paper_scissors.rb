@@ -2,9 +2,14 @@ class Game
 
   PAIRS = {
     rock:     { beats: :scissors },
+
+    #NEW RUBY SYNTAX FOR "beats => ""
     paper:    { beats: :rock },
     scissors: { beats: :paper }
   }.freeze
+
+  #CONSTANT CANT CHANGE 
+  #RULE FOR EACH PAIR 
 
   def initialize(player1, player2)
     @player1, @player2 = player1, player2
@@ -13,6 +18,7 @@ class Game
   def winner
     return nil if same_pick?
 
+#
     if PAIRS[@player1.pick][:beats] == @player2.pick
       @player1
     else
