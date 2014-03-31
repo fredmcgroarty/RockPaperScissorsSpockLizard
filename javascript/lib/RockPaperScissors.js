@@ -26,10 +26,13 @@ function Game(player1, player2) {
 
 Game.prototype.winner = function(player1, player2) {
 	var pairs = {
-		"rock": "scissors",
-		"scissors": "paper",
-		"paper": "rock",
+		"rock": ["scissors", "lizard"],
+		"scissors": ["paper", "lizard"],
+		"paper": ["rock", "spock"],
+		"lizard": ["paper", "spock"],
+		"spock": ["rock", 'scissors']
 	};
+
 	if (this.player1.pick == this.player2.pick) {
 		return null
 	}
@@ -41,6 +44,7 @@ Game.prototype.winner = function(player1, player2) {
 	}
 
 }
+
 
 
 
