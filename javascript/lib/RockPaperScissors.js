@@ -11,17 +11,35 @@ function Game(player1, player2) {
 	this.player2 = player2;
 }
 
+// Game.prototype.winner = function(player1, player2) {
+// 	if (this.player1.pick == this.player2.pick) {
+// 		return null
+// 	}
+// 	else if ((this.player1.pick == "rock" && this.player2.pick == "scissors") ||
+// 		(this.player1.pick == "scissors" && this.player2.pick == "paper") ||
+// 		(this.player1.pick == "paper" && this.player2.pick == "rock")) {
+// 		return this.player1 }
+// 	else {
+// 		return this.player2
+// 	}
+// }
+
 Game.prototype.winner = function(player1, player2) {
+	var pairs = {
+		"rock": "scissors",
+		"scissors": "paper",
+		"paper": "rock",
+	};
 	if (this.player1.pick == this.player2.pick) {
 		return null
 	}
-	else if ((this.player1.pick == "rock" && this.player2.pick == "scissors") ||
-		(this.player1.pick == "scissors" && this.player2.pick == "paper") ||
-		(this.player1.pick == "paper" && this.player2.pick == "rock")) {
-		return this.player1 }
+	else if (pairs[this.player1.pick] == this.player2.pick) {
+		return this.player1
+	}
 	else {
 		return this.player2
 	}
+
 }
 
 
