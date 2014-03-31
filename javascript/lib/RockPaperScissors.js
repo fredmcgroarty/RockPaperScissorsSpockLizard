@@ -30,15 +30,18 @@ Game.prototype.winner = function(player1, player2) {
 		"scissors": ["paper", "lizard"],
 		"paper": ["rock", "spock"],
 		"lizard": ["paper", "spock"],
-		"spock": ["rock", 'scissors']
+		"spock": ["rock", "scissor"]
 	};
 
-	if (this.player1.pick == this.player2.pick) {
-		return null
-	}
-	else if (pairs[this.player1.pick] == this.player2.pick) {
+
+	if (pairs[this.player1.pick].indexOf(this.player2.pick) > -1 ) {
 		return this.player1
 	}
+
+	else if (this.player1.pick == this.player2.pick) {
+		return null
+	}
+
 	else {
 		return this.player2
 	}
