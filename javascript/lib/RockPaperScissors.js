@@ -16,16 +16,16 @@ function Game(player1, player2) {
 }
 	
 
-	var pairs = {
-		"rock": ["smashes", "scissors", "lizard"],
-		"scissors": ["cuts", "paper", "lizard"],
-		"paper": ["smothers","rock", "spock"],
-		"lizard": ["bites","paper", "spock"],
-		"spock": ["molests", "rock", "scissor"]
+Game.prototype.PAIRS = {
+	"rock": { "scissors": "blunts", "lizard": "squashes" },
+	"scissors": { "paper": "cuts", "gets stabby with": "lizard"},
+	"paper": {"rock": "smothers", "spock": "confuses"},
+	"lizard": {"paper": "bites", "spock": "turns on"},
+	"spock": {"rock": "molests", "scissors": "murders"}
 	};
 
 Game.prototype.winner = function(player1, player2) {
-	if (pairs[this.player1.pick].include(this.player2.pick)) {
+	if (this.PAIRS[this.player1.pick][this.player2.pick]) {
 		this.winner = this.player1
 		this.loser = this.player2
 		return this.player1
@@ -42,7 +42,7 @@ Game.prototype.winner = function(player1, player2) {
 
 
 Game.prototype.message = function() {
-	return (this.winner.pick + " " + pairs[this.winner.pick][0] + " " + this.loser.pick);
+	return (this.winner.pick + " " + this.PAIRS[this.winner.pick][this.loser.pick] + " " + this.loser.pick);
 };
 
 

@@ -6,13 +6,13 @@
     game = new Game(player1, player2);
   });
 
-  describe('winning and losing', function() {
+  describe('--winning and losing--', function() {
     describe('rock', function() {
       it('should beat scissors', function() {
         player1.picks('rock');
         player2.picks('scissors');
         expect(game.winner()).toBe(player1);
-        expect(game.message()).toEqual("rock smashes scissors");
+        expect(game.message()).toEqual("rock blunts scissors");
       });
 
       it('should lose to paper', function() {
@@ -22,6 +22,19 @@
         expect(game.message()).toBe("paper smothers rock")
       });
 
+      it('should beat lizard', function() {
+        player1.picks('rock');
+        player2.picks('lizard');
+        expect(game.winner()).toBe(player1);
+        expect(game.message()).toBe("rock squashes lizard")
+      });
+
+      it('should lose to spock', function() {
+        player1.picks('rock');
+        player2.picks('spock');
+        expect(game.winner()).toBe(player2)
+        expect(game.message()).toBe("spock molests rock")
+      }); 
     });
 
     describe('paper', function() {
@@ -81,12 +94,12 @@
       it('should lose to scissors', function() {
         player1.picks('spock');
         player2.picks('scissors');
-        expect(game.winner()).toBe(player2);
+        expect(game.winner()).toBe(player1);
       });
     });
   });
 
-  describe('draws', function() {
+  describe('---draws---', function() {
 
     describe('any identical picks', function() {
       it('should result in no winner', function() {
