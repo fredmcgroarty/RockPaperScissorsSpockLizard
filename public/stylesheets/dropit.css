@@ -10,7 +10,7 @@
     list-style-type: none;
 }          
 .menu ul.dropit-submenu a {
-    display: block;
+    display: inline-block;
     font-size: 14px;
     line-height: 25px;
     color: #7a868e;
