@@ -11,7 +11,7 @@ Game.prototype.PAIRS = {
 	"spock": {"rock": "molests", "scissors": "murders"}
 	};
 
-Game.prototype.winner = function(player1, player2) {
+Game.prototype.determineWinner = function(player1, player2) {
 	if (this.PAIRS[this.player1.pick][this.player2.pick]) {
 		this.winner = this.player1
 		this.loser = this.player2
@@ -32,5 +32,6 @@ Array.prototype.include = function(item){
 }
 
 Game.prototype.message = function() {
+	if (this.determineWinner() == null) {return this.winner.pick + " pleases himself"};
 	return (this.winner.pick + " " + this.PAIRS[this.winner.pick][this.loser.pick] + " " + this.loser.pick);
 };

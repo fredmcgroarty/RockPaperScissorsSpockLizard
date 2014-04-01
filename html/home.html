@@ -1,28 +1,39 @@
 <!doctype>
 <html>
-			<head>
-			  <link rel="stylesheet" type="text/css" href="../css/style.css">
-			  <link rel="stylesheet" type="text/css" href="../css/application.css">
-			</head>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
+	</head>
     <title>Rock Paper Scissors Lizard Spock</title>
   <body>
-    <h1>Rock Paper Scissors Lizard Spock</h1>
-    <ul id="results"></ul>
+    <h1>Archer Balotelli Birdseye Brown Putin</h1>
+    	<script src='../javascript/lib/player.js'></script>
+    	<script src='../javascript/lib/game.js'></script>
+    	<script src='http://code.jquery.com/jquery-2.1.0.min.js'></script> 
+		<center><div class='choices'>
+      <img src="../public/pics/archer.jpg" data-pick="rock">
+      <img src="../public/pics/balotelli.jpg" data-pick="paper">
+      <img src="../public/pics/birdseye.jpg" data-pick="scissors">
+      <img src="../public/pics/jamesbrown.jpg" data-pick="lizard">
+      <img src="../public/pics/putin.jpg" data-pick="spock">
+    </div></center>
 
-    <script src='../javascript/lib/player.js'></script>
-    <script src='../javascript/lib/game.js'></script>
-    <script src='http://code.jquery.com/jquery-2.1.0.min.js'></script> 
+<center>
+    <ul id="results"></ul>
+</center>
     <script>
       $(document).ready(function(){
         var p1 = new Player('Human');
         var p2 = new Player('Computer');
         var game = new Game(p1, p2);
 
+
+
         $('.choices img').on('click', function(){
           p1.picks($(this).data('pick'));
           p2.picks('spock');
+          game.determineWinner()
 
-          var latestResult = $('<li>' + game.winningMessage() + '</li>');
+          var latestResult = $('<li>' + game.message() + '</li>');
           $('#results').append(latestResult);
         });
       })

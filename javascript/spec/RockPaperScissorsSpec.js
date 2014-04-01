@@ -11,28 +11,28 @@
       it('should beat scissors', function() {
         player1.picks('rock');
         player2.picks('scissors');
-        expect(game.winner()).toBe(player1);
+        expect(game.determineWinner()).toBe(player1);
         expect(game.message()).toEqual("rock blunts scissors");
       });
 
       it('should lose to paper', function() {
         player1.picks('rock');
         player2.picks('paper');
-        expect(game.winner()).toBe(player2);
+        expect(game.determineWinner()).toBe(player2);
         expect(game.message()).toBe("paper smothers rock")
       });
 
       it('should beat lizard', function() {
         player1.picks('rock');
         player2.picks('lizard');
-        expect(game.winner()).toBe(player1);
+        expect(game.determineWinner()).toBe(player1);
         expect(game.message()).toBe("rock squashes lizard")
       });
 
       it('should lose to spock', function() {
         player1.picks('rock');
         player2.picks('spock');
-        expect(game.winner()).toBe(player2)
+        expect(game.determineWinner()).toBe(player2)
         expect(game.message()).toBe("spock molests rock")
       }); 
     });
@@ -41,7 +41,7 @@
       it('should beat rock', function() {
         player1.picks('paper');
         player2.picks('rock');
-        expect(game.winner()).toBe(player1);
+        expect(game.determineWinner()).toBe(player1);
         expect(game.message()).toBe("paper smothers rock")
 
       });
@@ -49,7 +49,7 @@
       it('should lose to scissors', function() {
         player1.picks('paper');
         player2.picks('scissors');
-        expect(game.winner()).toBe(player2);
+        expect(game.determineWinner()).toBe(player2);
         expect(game.message()).toBe("scissors cuts paper")
       });
     });
@@ -58,14 +58,14 @@
       it('should beat paper', function() {
         player1.picks('scissors');
         player2.picks('paper');
-        expect(game.winner()).toBe(player1);
+        expect(game.determineWinner()).toBe(player1);
       });
 
       it('should lose to rock', function() {
 
         player1.picks('scissors');
         player2.picks('rock');
-        expect(game.winner()).toBe(player2);
+        expect(game.determineWinner()).toBe(player2);
       });
     });
 
@@ -74,13 +74,13 @@
       it('should beat paper', function() {
         player1.picks('lizard');
         player2.picks('paper');
-        expect(game.winner()).toBe(player1);
+        expect(game.determineWinner()).toBe(player1);
       });
 
       it('should lose to rock', function() {
         player1.picks('lizard');
         player2.picks('rock');
-        expect(game.winner()).toBe(player2);
+        expect(game.determineWinner()).toBe(player2);
       });
     });
 
@@ -88,13 +88,13 @@
       it('should beat rock', function() {
         player1.picks('spock');
         player2.picks('rock');
-        expect(game.winner()).toBe(player1);
+        expect(game.determineWinner()).toBe(player1);
       });
 
       it('should lose to scissors', function() {
         player1.picks('spock');
         player2.picks('scissors');
-        expect(game.winner()).toBe(player1);
+        expect(game.determineWinner()).toBe(player1);
       });
     });
   });
@@ -106,7 +106,7 @@
         var drawGameResults = ['rock', 'paper', 'scissors', 'spock', 'lizard'].map(function(x) {
           player1.picks(x);
           player2.picks(x);
-          return game.winner();
+          return game.determineWinner();
         });
         expect(drawGameResults).toEqual([null, null, null, null, null]);
       });
