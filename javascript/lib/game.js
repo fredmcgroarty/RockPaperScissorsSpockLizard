@@ -4,11 +4,11 @@ function Game(player1, player2) {
 }
 
 Game.prototype.PAIRS = {
-	"rock": { "scissors": "blunts", "lizard": "squashes" },
-	"scissors": { "paper": "cuts", "lizard": "gets stabby with"},
-	"paper": {"rock": "smothers", "spock": "confuses"},
-	"lizard": {"paper": "bites", "spock": "turns on"},
-	"spock": {"rock": "molests", "scissors": "murders"}
+	"Jeffrey Archer": { "Mario Balotelli": "litigates against", "James Brown": "whispers sweet nothings to" },
+	"Mario Balotelli": { "Captain Birdseye": "cuts", "James Brown": "gets stabby with"},
+	"Captain Birdseye": {"Jeffrey Archer": "force feeds fish fingers down the neck of", "Mr Motivator": "launches a public enquiry against"},
+	"James Brown": {"Captain Birdseye": "screams in the face of", "Mr Motivator": "does a flying kick into"},
+	"Mr Motivator": {"Jeffrey Archer": "touches up", "Mario Balotelli": "stares at"}
 	};
 
 Game.prototype.determineWinner = function(player1, player2) {
