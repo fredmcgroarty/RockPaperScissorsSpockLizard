@@ -6,6 +6,7 @@
     <title>Rock Paper Scissors Lizard Spock</title>
   <body>
     <h1>Archer Balotelli Birdseye Brown Putin</h1>
+    <div id="players"><h1></h1></div>
     	<script src='../javascript/lib/player.js'></script>
     	<script src='../javascript/lib/game.js'></script>
     	<script src='http://code.jquery.com/jquery-2.1.0.min.js'></script> 
@@ -22,19 +23,21 @@
 </center>
     <script>
       $(document).ready(function(){
-        var p1 = new Player('Human');
+      	var name = prompt('Please enter your name');
+        var p1 = new Player(name);
         var p2 = new Player('Computer');
         var game = new Game(p1, p2);
 
-
-
         $('.choices img').on('click', function(){
           p1.picks($(this).data('pick'));
-          p2.picks('spock');
+      		p2.randompick();
           game.determineWinner()
 
-          var latestResult = $('<li>' + game.message() + '</li>');
-          $('#results').append(latestResult);
+        var latestResult = $('<li>' + game.message() + '</li>');
+        $('#results').html(latestResult);
+
+        $('#players h1').html("you are " + p1.name + " and you are playing the mighty " + p1.pick)
+
         });
       })
     </script>

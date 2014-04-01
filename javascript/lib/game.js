@@ -5,7 +5,7 @@ function Game(player1, player2) {
 
 Game.prototype.PAIRS = {
 	"rock": { "scissors": "blunts", "lizard": "squashes" },
-	"scissors": { "paper": "cuts", "gets stabby with": "lizard"},
+	"scissors": { "paper": "cuts", "lizard": "gets stabby with"},
 	"paper": {"rock": "smothers", "spock": "confuses"},
 	"lizard": {"paper": "bites", "spock": "turns on"},
 	"spock": {"rock": "molests", "scissors": "murders"}
@@ -32,6 +32,6 @@ Array.prototype.include = function(item){
 }
 
 Game.prototype.message = function() {
-	if (this.determineWinner() == null) {return this.winner.pick + " pleases himself"};
+	if (this.determineWinner() == null) {return this.player1.pick + " pleases himself"};
 	return (this.winner.pick + " " + this.PAIRS[this.winner.pick][this.loser.pick] + " " + this.loser.pick);
 };
