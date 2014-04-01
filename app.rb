@@ -1,6 +1,5 @@
 require 'sinatra'
-require_relative './index'
 
-get '/' do 
-	erb :index
+get '/' do
+  erb :index
 end
