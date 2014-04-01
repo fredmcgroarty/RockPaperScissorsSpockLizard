@@ -2,21 +2,43 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="../public/stylesheets/style.css">
-	</head>
+    <link rel="stylesheet" href="../public/stylesheets/dropit.css" type="text/css" />
+  </head>
     <title>Rock Paper Scissors Lizard Spock</title>
   <body>
-    <h1>Archer Balotelli Birdseye Brown Putin</h1>
-    <div id="players"><h1></h1></div>
-    	<script src='../javascript/lib/player.js'></script>
-    	<script src='../javascript/lib/game.js'></script>
-    	<script src='http://code.jquery.com/jquery-2.1.0.min.js'></script> 
+    <center><h1>Archer Balotelli Birdseye Brown Mr Motivator</h1><center>
+    <center><div id="players"><h1></h1></div></center>
+      <script src='../javascript/lib/player.js'></script>
+      <script src='../javascript/lib/game.js'></script>
+      <script src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
+      <script src="../javascript/lib/dropit.js"></script>
+
+
+
+<center>
+    <ul class="menu">
+      <li>
+        <a>Choose Your Fighter!</a>
+          <ul>
+            <li>"Jeffrey Archer"</a></li>
+            <li>"Mario Balotelli"</a></li>
+            <li>"Captain Birdseye"</a></li>
+            <li>"James Brown"</a></li>
+            <li>"Mr Motivator"</a></li>
+          </ul>
+      </li>
+    </ul>
+</center>
+
 		<center><div class='choices'>
       <img src="../public/pics/archer.jpg" data-pick="Jeffrey Archer">
       <img src="../public/pics/balotelli.jpg" data-pick="Mario Balotelli">
       <img src="../public/pics/birdseye.jpg" data-pick="Captain Birdseye">
       <img src="../public/pics/jamesbrown.jpg" data-pick="James Brown">
-      <img src="../public/pics/putin.jpg" data-pick="Mr Motivator">
+      <img src="../public/pics/motivator1.jpg" data-pick="Mr Motivator">
     </div></center>
+
+
 
 <center>
     <ul id="results"></ul>
@@ -24,20 +46,34 @@
     <script>
       $(document).ready(function(){
       	var name = prompt('Please enter your name');
-        var p1 = new Player(name);
+
+        if(name) {
+          var p1 = new Player(name);          
+        } else {
+           var p1 = new Player('Human');
+        }
+
         var p2 = new Player('Computer');
         var game = new Game(p1, p2);
+
+        $('.menu').dropit();
+
+
+       
 
         $('.choices img').on('click', function(){
           p1.picks($(this).data('pick'));
       		p2.randompick();
           game.determineWinner()
 
-        var latestResult = $('<li>' + game.message() + '</li>');
-        $('#results').html(latestResult);
+          $('#players h1').html("Welcome " + p1.name + " . You are playing the mighty " + p1.pick)
 
-        $('#players h1').html("you are " + p1.name + " and you are playing the mighty " + p1.pick)
-
+          var latestResult = $('<li>' + game.message() + '</li>');
+          latestResult.prependTo('#results')
+          
+          $('#results li:nth-child(5)').fadeOut(function(){
+            $(this).remove()
+          });
         });
       })
     </script>
