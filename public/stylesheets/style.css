@@ -1,26 +1,17 @@
 body {
   font-family: 'Helvetica Neue';
   margin: 15px 0 0 30px;
-    }
-
-.choices img {
-  width: 15%;
-  margin-right: 2.5%;
-  cursor: pointer;
-  opacity: 0.5;
-  transition: 1s all ease;
-}
-
-.choices img:hover {
-  opacity: 1;
 }
 
 h2, h3 {
   text-transform: capitalize;
 }
 
-.menu {
-  list-style: none;
+#choices img {
+  width: 15%;
+  margin-right: 2.5%;
+  cursor: pointer;
+  transition: 1s all ease;
 }
 
 #results li {
@@ -33,6 +24,31 @@ h2, h3 {
   border-radius: 14px;
   margin: 10px;
   list-style-type: none;
-
 }
+
+
+.item {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px; 
+}
+
+.item {
+  -webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+ 
+.item:hover {
+  border-radius: 50%;
+  -webkit-transform: rotate(360deg);
+     -moz-transform: rotate(360deg);
+       -o-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+          opacity: 0.7;
+}
+
 

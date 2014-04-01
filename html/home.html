@@ -11,29 +11,13 @@
       <script src='../javascript/lib/player.js'></script>
       <script src='../javascript/lib/game.js'></script>
       <script src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
-      <script src="../javascript/lib/dropit.js"></script>
 
-    <center>
-        <ul class="menu">
-          <li>
-            <a>Choose Your Opponent!</a>
-              <ul>
-                <li data-player="Jeffrey Archer"><a>"Jeffrey Archer"</a></li>
-                <li data-player="Mario Balotelli"><a>"Mario Balotelli"</a></li>
-                <li data-player="Captain Birdseye"><a>"Captain Birdseye"</a></li>
-                <li data-player="James Brown"><a>"James Brown"</a></li>
-                <li data-player="Mr Motivator"><a>"Mr Motivator"</a></li>
-              </ul>
-          </li>
-        </ul>
-    </center>
-
-		<center><div class='choices'>
-      <img src="../public/pics/archer.jpg" data-pick="Jeffrey Archer">
-      <img src="../public/pics/balotelli.jpg" data-pick="Mario Balotelli">
-      <img src="../public/pics/birdseye.jpg" data-pick="Captain Birdseye">
-      <img src="../public/pics/jamesbrown.jpg" data-pick="James Brown">
-      <img src="../public/pics/motivator1.jpg" data-pick="Mr Motivator">
+		<center><div id='choices'>
+      <img class="item" src="../public/pics/1.jpg" data-pick="Jeffrey Archer">
+      <img class="item" src="../public/pics/2.jpg" data-pick="Mario Balotelli">
+      <img class="item" src="../public/pics/3.jpg" data-pick="Captain Birdseye">
+      <img class="item" src="../public/pics/4.jpg" data-pick="James Brown">
+      <img class="item" src="../public/pics/5.jpg" data-pick="Mr Motivator">
     </div></center>
 
     <center>
@@ -42,17 +26,13 @@
     <script>
       $(document).ready(function(){
       	var name = prompt('Please enter your name');
-
         if(name) {
           var p1 = new Player(name);          
         } else {
           var p1 = new Player('Human');
         }
-
         var p2 = new Player('Computer');
         var game = new Game(p1, p2);
-
-        $('.menu').dropit();
 
         $('.menu li').on('click', function() {
           if($(this).data('player')) {          
@@ -60,14 +40,13 @@
           }
         })
 
-        $('.choices img').on('click', function(){
+        $('#choices img').on('click', function(){
           p1.picks($(this).data('pick'));
           window.playerChoice ? p2.picks(window.playerChoice) : p2.randompick();
-          
+
           game.determineWinner()
 
-          $('#players h1').html("Welcome " + p1.name + " . You are playing the mighty " + p1.pick)
-
+          $('#players h1').html("Welcome " + p1.name + ". You are playing the mighty " + p1.pick)
           var latestResult = $('<li>' + game.message() + '</li>');
           latestResult.prependTo('#results')
           
