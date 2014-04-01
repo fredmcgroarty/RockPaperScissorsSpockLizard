@@ -13,22 +13,20 @@
       <script src='http://code.jquery.com/jquery-2.1.0.min.js'></script>
       <script src="../javascript/lib/dropit.js"></script>
 
-
-
-<center>
-    <ul class="menu">
-      <li>
-        <a>Choose Your Fighter!</a>
-          <ul>
-            <li>"Jeffrey Archer"</a></li>
-            <li>"Mario Balotelli"</a></li>
-            <li>"Captain Birdseye"</a></li>
-            <li>"James Brown"</a></li>
-            <li>"Mr Motivator"</a></li>
-          </ul>
-      </li>
-    </ul>
-</center>
+    <center>
+        <ul class="menu">
+          <li>
+            <a>Choose Your Opponent!</a>
+              <ul>
+                <li data-player="Jeffrey Archer"><a>"Jeffrey Archer"</a></li>
+                <li data-player="Mario Balotelli"><a>"Mario Balotelli"</a></li>
+                <li data-player="Captain Birdseye"><a>"Captain Birdseye"</a></li>
+                <li data-player="James Brown"><a>"James Brown"</a></li>
+                <li data-player="Mr Motivator"><a>"Mr Motivator"</a></li>
+              </ul>
+          </li>
+        </ul>
+    </center>
 
 		<center><div class='choices'>
       <img src="../public/pics/archer.jpg" data-pick="Jeffrey Archer">
@@ -38,11 +36,9 @@
       <img src="../public/pics/motivator1.jpg" data-pick="Mr Motivator">
     </div></center>
 
-
-
-<center>
-    <ul id="results"></ul>
-</center>
+    <center>
+        <ul id="results"></ul>
+    </center>
     <script>
       $(document).ready(function(){
       	var name = prompt('Please enter your name');
@@ -50,7 +46,7 @@
         if(name) {
           var p1 = new Player(name);          
         } else {
-           var p1 = new Player('Human');
+          var p1 = new Player('Human');
         }
 
         var p2 = new Player('Computer');
@@ -58,12 +54,16 @@
 
         $('.menu').dropit();
 
-
-       
+        $('.menu li').on('click', function() {
+          if($(this).data('player')) {          
+            window.playerChoice = $(this).data('player');
+          }
+        })
 
         $('.choices img').on('click', function(){
           p1.picks($(this).data('pick'));
-      		p2.randompick();
+          window.playerChoice ? p2.picks(window.playerChoice) : p2.randompick();
+          
           game.determineWinner()
 
           $('#players h1').html("Welcome " + p1.name + " . You are playing the mighty " + p1.pick)
