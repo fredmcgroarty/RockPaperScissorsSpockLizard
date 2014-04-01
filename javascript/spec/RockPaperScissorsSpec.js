@@ -33,7 +33,7 @@
         player1.picks('Jeffrey Archer');
         player2.picks('Mr Motivator');
         expect(game.determineWinner()).toBe(player2)
-        expect(game.message()).toBe("Mr Motivator molests Jeffrey Archer")
+        expect(game.message()).toBe("Mr Motivator touches up Jeffrey Archer")
       }); 
     });
 

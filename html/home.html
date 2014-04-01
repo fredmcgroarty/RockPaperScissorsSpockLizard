@@ -46,7 +46,7 @@
 
           game.determineWinner()
 
-          $('#players h1').html("Welcome " + p1.name + ". You are playing the mighty " + p1.pick)
+          $('#players h1').html("Welcome " + p1.name + ". You are playing with the mighty " + p1.pick)
           var latestResult = $('<li>' + game.message() + '</li>');
           latestResult.prependTo('#results')
           
